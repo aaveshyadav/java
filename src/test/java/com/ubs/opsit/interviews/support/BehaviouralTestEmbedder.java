@@ -12,6 +12,8 @@ import org.jbehave.core.steps.ParameterConverters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ubs.opsit.interviews.TimeConverterImpl;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -75,7 +77,7 @@ public final class BehaviouralTestEmbedder extends ConfigurableEmbedder {
 
     public BehaviouralTestEmbedder usingStepsFrom(Object... stepsSource) {
         assertThat(stepsFactory).isNull();
-        stepsFactory = new InstanceStepsFactory(configuration(), stepsSource);
+        stepsFactory = new InstanceStepsFactory(configuration(), stepsSource, new TimeConverterImpl());
         return this;
     }
 
